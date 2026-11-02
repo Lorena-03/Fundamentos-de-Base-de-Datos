@@ -24,17 +24,11 @@ Conoce y comprende los conceptos básicos de base de datos para proponer solucio
 1. Investigar los conceptos fundamentales, objetivos, usos y áreas de aplicación de las bases de datos y elaborar un mapa conceptual analítico.
 2. Investigar los modelos de bases de datos (jerárquico, red, relacional, orientado a objetos, entre otros) y elaborar una tabla comparativa con su definición y forma de representación de los datos.
 
-**[Consultar Tarea 1.1](./Tarea%201.1/README.md)**
-
 ### Tarea 1.2. Clasificación y arquitecturas (ANSI/SPARC y SGBD)
 
 1. Investigar y elaborar un cuadro sinóptico sobre la clasificación de las bases de datos según su ubicación, variabilidad de datos y otros criterios.
 2. Describir y esquematizar la arquitectura de tres niveles de una base de datos (físico, conceptual y externo), así como la arquitectura funcional interna del SGBD.
-
-**[Consultar Tarea 1.2](./Tarea1.2/README.md)**
-
 ---
-
 ## Resultado de aprendizaje
 
 Al finalizar esta unidad, se comprenderán los fundamentos de las bases de datos, sus diferentes modelos y clasificaciones, así como las arquitecturas que permiten organizar, administrar y almacenar información de manera estructurada y eficiente.
