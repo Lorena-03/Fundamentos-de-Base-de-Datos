@@ -127,19 +127,6 @@ flowchart TB
 
 ---
 
-## Organización de archivos en GitHub
-
-Puedes guardar los tres diagramas dentro de tu carpeta `Tarea-2` de esta manera:
-
-```text
-Unidad-1/
-│
-└── Tarea-2/
-    ├── README.md
-    ├── cuadro-sinoptico-clasificacion.md
-    ├── arquitectura-funcional-sgbd.md
-    └── arquitectura-tres-niveles.md
-```
 
 **Importante:** Cada archivo `.md` debe contener su título, una breve descripción y el bloque de código Mermaid correspondiente, incluyendo las tres comillas invertidas y la palabra `mermaid`.
 
