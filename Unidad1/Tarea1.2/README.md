@@ -1,4 +1,8 @@
-# 1. Cuadro sinóptico: Clasificación de las bases de datos
+# Unidad 1. Fundamentos de Bases de Datos
+
+# Tarea 1.2. Clasificación y arquitectura de las bases de datos
+
+## 1. Cuadro sinóptico: Clasificación de las bases de datos
 
 Las bases de datos se pueden clasificar según diferentes criterios, como su ubicación, variabilidad, modelo de datos, contenido y forma de acceso o alojamiento.
 
@@ -14,13 +18,13 @@ flowchart LR
 
     B --> B1["Centralizadas"]
     B1 --> B11["Información en un servidor central"]
-    B11 --> B12["Ejemplo: base de datos almacenada en el servidor de una escuela"]
+    B11 --> B12["Ejemplo: servidor de una escuela"]
     B --> B2["Distribuidas"]
-    B2 --> B21["Información repartida entre varios equipos o ubicaciones"]
-    B21 --> B22["Ejemplo: sucursales que comparten información entre distintas ciudades"]
+    B2 --> B21["Información repartida entre varios equipos"]
+    B21 --> B22["Ejemplo: sucursales en distintas ciudades"]
 
     C --> C1["Estáticas"]
-    C1 --> C11["Datos que se mantienen sin cambios frecuentes"]
+    C1 --> C11["Datos sin cambios frecuentes"]
     C11 --> C12["Ejemplo: registros históricos de temperaturas"]
     C --> C2["Dinámicas"]
     C2 --> C21["Permiten insertar, actualizar y eliminar información"]
@@ -36,7 +40,7 @@ flowchart LR
     D4 --> D41["Información representada mediante objetos"]
     D --> D5["NoSQL"]
     D5 --> D51["Documentos, clave-valor, grafos y columnas anchas"]
-    D5 --> D52["Ejemplos: MongoDB (documental), bases clave-valor y grafos"]
+    D5 --> D52["Ejemplos: MongoDB y bases de datos de grafos"]
 
     E --> E1["Bibliográficas"]
     E1 --> E11["Referencias de libros, artículos y publicaciones"]
@@ -45,18 +49,19 @@ flowchart LR
     E --> E3["Multimedia"]
     E3 --> E31["Administran imágenes, audio y video"]
     E --> E4["Científicas o estadísticas"]
-    E4 --> E41["Guardan datos para investigación y análisis"]
+    E4 --> E41["Datos para investigación y análisis"]
 
     F --> F1["Locales"]
-    F1 --> F11["Se utilizan desde un equipo o entorno local"]
+    F1 --> F11["Se utilizan desde un equipo local"]
     F --> F2["En red"]
-    F2 --> F21["Se accede mediante una red de computadoras"]
+    F2 --> F21["Acceso mediante una red de computadoras"]
     F --> F3["En la nube"]
-    F3 --> F31["Se alojan en infraestructura de un proveedor de servicios"]
+    F3 --> F31["Alojadas en infraestructura de un proveedor"]
 
     classDef principal fill:#d9efff,stroke:#17618a,stroke-width:2px,color:#174d6b
     classDef categoria fill:#c9f0e5,stroke:#15936f,stroke-width:2px,color:#174d6b
     classDef detalle fill:#f4f5f8,stroke:#8a9aa5,color:#303747
+
     class A principal
     class B,C,D,E,F categoria
     class B1,B2,C1,C2,D1,D2,D3,D4,D5,E1,E2,E3,E4,F1,F2,F3 detalle
@@ -64,7 +69,7 @@ flowchart LR
 
 ---
 
-# 2. Arquitectura funcional interna del SGBD
+## 2. Arquitectura funcional interna del SGBD
 
 Este esquema representa los componentes internos de un Sistema Gestor de Bases de Datos (SGBD) y cómo se comunican para procesar las solicitudes de los usuarios y administrar la información.
 
@@ -100,7 +105,7 @@ flowchart TB
 
 ---
 
-# 3. Arquitectura de tres niveles de una base de datos
+## 3. Arquitectura de tres niveles de una base de datos
 
 La arquitectura de tres niveles permite separar la forma en que los usuarios visualizan la información, la estructura lógica de la base de datos y la manera en que los datos se almacenan físicamente.
 
@@ -122,12 +127,8 @@ flowchart TB
     class A titulo
     class B externo
     class C conceptual
-    class D interno 
+    class D interno
 ```
 
 ---
 
-
-**Importante:** Cada archivo `.md` debe contener su título, una breve descripción y el bloque de código Mermaid correspondiente, incluyendo las tres comillas invertidas y la palabra `mermaid`.
-
-GitHub renderizará automáticamente los diagramas cuando abras cada archivo. No necesitas subir las imágenes originales para visualizarlos.
