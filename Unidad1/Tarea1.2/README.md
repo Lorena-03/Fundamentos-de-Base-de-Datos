@@ -122,7 +122,7 @@ flowchart TB
     class A titulo
     class B externo
     class C conceptual
-    class D interno
+    class D interno 
 ```
 
 ---
