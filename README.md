@@ -2,8 +2,6 @@
 Unidades 1-6
 # Unidad 1. Introducción a las bases de datos
 
-## Descripción de la unidad 1
-
 En esta unidad se estudian los conceptos fundamentales de las bases de datos, su importancia y su aplicación en diferentes áreas. Se conocen sus objetivos, usos, características y los distintos modelos que permiten organizar y representar la información.
 
 También se analiza cómo se clasifican las bases de datos según su ubicación, variabilidad, contenido y forma de acceso. Finalmente, se estudia la arquitectura de tres niveles ANSI/SPARC y la estructura funcional interna de un Sistema Gestor de Bases de Datos (SGBD), comprendiendo cómo se organiza, administra y almacena la información.
