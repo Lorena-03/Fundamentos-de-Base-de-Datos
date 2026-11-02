@@ -77,20 +77,16 @@ graph TD
     style Areas fill:#fbcfe8,stroke:#333,stroke-width:2px;
     style Resultado fill:#d8b4fe,stroke:#333,stroke-width:2px;
     ```
-2.	Tabla comparativa de los modelos de bases de datos 
+2.	Tabla comparativa de los modelos de bases de datos
 ```mermaid
-graph TD
-    classDef title fill:#333,stroke:#fff,stroke-width:2px,color:#fff;
-    classDef model fill:#f3f4f6,stroke:#333,stroke-width:1px,color:#000;
-
-    Root["MODELOS DE BASES DE DATOS"]:::title
-
-    Root --> M1["<b>Jerárquico</b><br>• Organiza mediante relaciones padre/hijo.<br>• <i>Representación:</i> Árbol con raíz, ramas y nodos."]:::model
-    Root --> M2["<b>En red</b><br>• Relación de varios registros y padres.<br>• <i>Representación:</i> Grafo de nodos y enlaces."]:::model
-    Root --> M3["<b>Relacional</b><br>• Datos en tablas relacionadas.<br>• <i>Representación:</i> Filas, columnas y claves."]:::model
-    Root --> M4["<b>Orientado a objetos</b><br>• Objetos con atributos y comportamientos.<br>• <i>Representación:</i> Objetos, clases y métodos."]:::model
-    Root --> M5["<b>Entidad-relación</b><br>• Modela entidades y relaciones.<br>• <i>Representación:</i> Rectángulos, óvalos y rombos."]:::model
-    Root --> M6["<b>Documental</b><br>• Estructuras de documentos flexibles.<br>• <i>Representación:</i> JSON, BSON o XML anidados."]:::model
-    Root --> M7["<b>Clave-valor</b><br>• Elementos asociados a una clave única.<br>• <i>Representación:</i> Pares de clave y valor."]:::model
-    Root --> M8["<b>Orientado a columnas</b><br>• Organizado por familias de columnas.<br>• <i>Representación:</i> Clave y grupos de columnas."]:::model
-    Root --> M9["<b>En grafos</b><br>• Análisis de relaciones complejos.<br>• <i>Representación:</i> Nodos, aristas y propiedades."]:::model
+  | Modelo | Definición | Forma de representación de los datos |
+| :--- | :--- | :--- |
+| **Jerárquico** | Organiza los datos mediante relaciones de padre e hijo. Cada hijo tiene un solo padre[cite: 2]. | Árbol con raíz, ramas y nodos[cite: 2]. |
+| **En red** | Permite que un registro se relacione con varios registros, incluso con varios padres[cite: 2]. | Grafo de nodos conectados mediante enlaces[cite: 2]. |
+| **Relacional** | Organiza los datos en tablas relacionadas entre sí[cite: 2]. | Filas (registros), columnas (campos) y claves[cite: 2]. |
+| **Orientado a objetos** | Almacena información como objetos que contienen atributos y comportamientos[cite: 2]. | Objetos, clases, atributos y métodos[cite: 2]. |
+| **Entidad-relación** | Representa entidades, sus características y las relaciones entre ellas. Se utiliza principalmente para diseñar bases de datos[cite: 2]. | Diagramas con rectángulos, óvalos y rombos[cite: 2]. |
+| **Documental** | Almacena datos en documentos que pueden tener estructuras flexibles[cite: 2]. | Documentos JSON, BSON o XML con campos anidados[cite: 2]. |
+| **Clave-valor** | Guarda cada elemento asociado a una clave única que permite localizarlo[cite: 2]. | Pares de clave y valor[cite: 2]. |
+| **Orientado a columnas** | Organiza los datos por familias de columnas, según la implementación del sistema[cite: 2]. | Filas identificadas por una clave y grupos de columnas[cite: 2]. |
+| **En grafos** | Representa elementos y las conexiones entre ellos, facilitando el análisis de relaciones complejas[cite: 2]. | Nodos, aristas y propiedades[cite: 2]. |
