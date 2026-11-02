@@ -1,3 +1,4 @@
+1.	Mapa conceptual analítico: Bases de datos
 ```mermaid
 graph TD
     %% Título principal y definición
@@ -75,3 +76,21 @@ graph TD
     style Usos fill:#fef08a,stroke:#333,stroke-width:2px;
     style Areas fill:#fbcfe8,stroke:#333,stroke-width:2px;
     style Resultado fill:#d8b4fe,stroke:#333,stroke-width:2px;
+    ```
+2.	Tabla comparativa de los modelos de bases de datos 
+```mermaid
+graph TD
+    classDef title fill:#333,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef model fill:#f3f4f6,stroke:#333,stroke-width:1px,color:#000;
+
+    Root["MODELOS DE BASES DE DATOS"]:::title
+
+    Root --> M1["<b>Jerárquico</b><br>• Organiza mediante relaciones padre/hijo.<br>• <i>Representación:</i> Árbol con raíz, ramas y nodos."]:::model
+    Root --> M2["<b>En red</b><br>• Relación de varios registros y padres.<br>• <i>Representación:</i> Grafo de nodos y enlaces."]:::model
+    Root --> M3["<b>Relacional</b><br>• Datos en tablas relacionadas.<br>• <i>Representación:</i> Filas, columnas y claves."]:::model
+    Root --> M4["<b>Orientado a objetos</b><br>• Objetos con atributos y comportamientos.<br>• <i>Representación:</i> Objetos, clases y métodos."]:::model
+    Root --> M5["<b>Entidad-relación</b><br>• Modela entidades y relaciones.<br>• <i>Representación:</i> Rectángulos, óvalos y rombos."]:::model
+    Root --> M6["<b>Documental</b><br>• Estructuras de documentos flexibles.<br>• <i>Representación:</i> JSON, BSON o XML anidados."]:::model
+    Root --> M7["<b>Clave-valor</b><br>• Elementos asociados a una clave única.<br>• <i>Representación:</i> Pares de clave y valor."]:::model
+    Root --> M8["<b>Orientado a columnas</b><br>• Organizado por familias de columnas.<br>• <i>Representación:</i> Clave y grupos de columnas."]:::model
+    Root --> M9["<b>En grafos</b><br>• Análisis de relaciones complejos.<br>• <i>Representación:</i> Nodos, aristas y propiedades."]:::model
