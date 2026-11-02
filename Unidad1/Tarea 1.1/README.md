@@ -1,4 +1,7 @@
-1.	Mapa conceptual analítico: Bases de datos
+# Documentación de Bases de Datos
+
+## 1. Mapa conceptual analítico: Bases de datos
+
 ```mermaid
 graph TD
     %% Título principal y definición
@@ -76,17 +79,7 @@ graph TD
     style Usos fill:#fef08a,stroke:#333,stroke-width:2px;
     style Areas fill:#fbcfe8,stroke:#333,stroke-width:2px;
     style Resultado fill:#d8b4fe,stroke:#333,stroke-width:2px;
-    ```
-2.	Tabla comparativa de los modelos de bases de datos
+    ´´´
 ```mermaid
-  | Modelo | Definición | Forma de representación de los datos |
-| :--- | :--- | :--- |
-| **Jerárquico** | Organiza los datos mediante relaciones de padre e hijo. Cada hijo tiene un solo padre[cite: 2]. | Árbol con raíz, ramas y nodos[cite: 2]. |
-| **En red** | Permite que un registro se relacione con varios registros, incluso con varios padres[cite: 2]. | Grafo de nodos conectados mediante enlaces[cite: 2]. |
-| **Relacional** | Organiza los datos en tablas relacionadas entre sí[cite: 2]. | Filas (registros), columnas (campos) y claves[cite: 2]. |
-| **Orientado a objetos** | Almacena información como objetos que contienen atributos y comportamientos[cite: 2]. | Objetos, clases, atributos y métodos[cite: 2]. |
-| **Entidad-relación** | Representa entidades, sus características y las relaciones entre ellas. Se utiliza principalmente para diseñar bases de datos[cite: 2]. | Diagramas con rectángulos, óvalos y rombos[cite: 2]. |
-| **Documental** | Almacena datos en documentos que pueden tener estructuras flexibles[cite: 2]. | Documentos JSON, BSON o XML con campos anidados[cite: 2]. |
-| **Clave-valor** | Guarda cada elemento asociado a una clave única que permite localizarlo[cite: 2]. | Pares de clave y valor[cite: 2]. |
-| **Orientado a columnas** | Organiza los datos por familias de columnas, según la implementación del sistema[cite: 2]. | Filas identificadas por una clave y grupos de columnas[cite: 2]. |
-| **En grafos** | Representa elementos y las conexiones entre ellos, facilitando el análisis de relaciones complejas[cite: 2]. | Nodos, aristas y propiedades[cite: 2]. |
+2. Tabla comparativa de los modelos de bases de datosModeloDefiniciónForma de representación de los datosJerárquicoOrganiza los datos mediante relaciones de padre e hijo. Cada hijo tiene un solo padre.   Árbol con raíz, ramas y nodos.   En redPermite que un registro se relacione con varios registros, incluso con varios padres.   Grafo de nodos conectados mediante enlaces.   RelacionalOrganiza los datos en tablas relacionadas entre sí.   Filas (registros), columnas (campos) y claves.   Orientado a objetosAlmacena información como objetos que contienen atributos y comportamientos.   Objetos, clases, atributos y métodos.   Entidad-relaciónRepresenta entidades, sus características y las relaciones entre ellas. Se utiliza principalmente para diseñar bases de datos.   Diagramas con rectángulos, óvalos y rombos.   DocumentalAlmacena datos en documentos que pueden tener estructuras flexibles.   Documentos JSON, BSON o XML con campos anidados.   Clave-valorGuarda cada elemento asociado a una clave única que permite localizarlo.   Pares de clave y valor.   Orientado a columnasOrganiza los datos por familias de columnas, según la implementación del sistema.   Filas identificadas por una clave y grupos de columnas.   En grafosRepresenta elementos y las conexiones entre ellos, facilitando el análisis de relaciones complejas.   
+
