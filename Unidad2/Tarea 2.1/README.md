@@ -2,82 +2,82 @@
 ```mermaid
 erDiagram
     SUCURSAL {
-        string ID_Sucursal
-        string Nombre
-        string Direccion
-        string Telefonos
+        ID_Sucursal
+        Nombre
+        Direccion
+        Telefonos
     }
 
     EMPLEADO {
-        string ID_Empleado
-        string NombreCompleto
-        string FechaContratacion
+        ID_Empleado
+        NombreCompleto
+        FechaContratacion
     }
 
     FARMACEUTICO {
-        string ID_Empleado
-        string CedulaProfesional
-        string Especialidad
+        ID_Empleado
+        CedulaProfesional
+        Especialidad
     }
 
     CAJERO {
-        string ID_Empleado
-        string Turno
-        string CajaAsignada
+        ID_Empleado
+        Turno
+        CajaAsignada
     }
 
     CLIENTE {
-        string ID_Cliente
-        string Nombre
-        string Correo
-        string Telefono
+        ID_Cliente
+        Nombre
+        Correo
+        Telefono
     }
 
     PROVEEDOR {
-        string ID_Proveedor
-        string RazonSocial
-        string DireccionFiscal
+        ID_Proveedor
+        RazonSocial
+        DireccionFiscal
     }
 
     PRODUCTO {
-        string ID_Producto
-        string NombreComercial
-        string PrincipioActivo
-        string PrecioVenta
-        string RequiereReceta
+        ID_Producto
+        NombreComercial
+        PrincipioActivo
+        PrecioVenta
+        RequiereReceta
     }
 
     LOTE {
-        string ID_Lote
-        string NumeroLote
-        string FechaCaducidad
-        string StockActual
+        ID_Lote
+        NumeroLote
+        FechaCaducidad
+        StockActual
     }
 
     VENTA {
-        string ID_Venta
-        string FechaHora
-        string Subtotal
-        string MontoTotal
+        ID_Venta
+        FechaHora
+        Subtotal
+        MontoTotal
     }
 
     RECETA_MEDICA {
-        string ID_Receta
-        string Folio
-        string FechaEmision
-        string Diagnostico
+        ID_Receta
+        Folio
+        FechaEmision
+        Diagnostico
     }
 
     MEDICO {
-        string ID_Medico
-        string CedulaMedico
-        string NombreMedico
+        ID_Medico
+        CedulaMedico
+        NombreMedico
     }
 
     DETALLE_VENTA {
-        string ID_Detalle
-        string Cantidad
-        string SubtotalLinea
+        ID_Detalle
+        Cantidad
+        SubtotalLinea
     }
 
   %% Jerarquía / Especialización con cardinalidad explícita
