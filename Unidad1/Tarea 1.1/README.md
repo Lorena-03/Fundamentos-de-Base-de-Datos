@@ -1,7 +1,7 @@
 
-# Actividad 1. Conceptos fundamentales de las bases de datos
+# Tarea 1.1 Conceptos fundamentales de las bases de datos
 
-### Mapa conceptual
+### Actividad 1: Mapa conceptual
 
 El siguiente mapa conceptual presenta la definición de las bases de datos, sus conceptos fundamentales, objetivos, usos y áreas de aplicación.
 
