@@ -1,5 +1,6 @@
+```mermaid
 erDiagram
-    %% Definición de 10 Entidades y sus Atributos Clave
+    %% Definición de Entidades y Atributos Clave
     SUCURSAL {
         string ID_Sucursal PK
         string Nombre
@@ -73,13 +74,19 @@ erDiagram
         string NombreMedico
     }
 
-    %% Jerarquía (Especialización)
+    DETALLE_VENTA {
+        string ID_Detalle PK
+        int Cantidad
+        float SubtotalLinea
+    }
+
+    %% Jerarquía / Especialización de Empleado
     EMPLEADO ||--o| FARMACEUTICO : "es_un"
     EMPLEADO ||--o| CAJERO : "es_un"
 
-    %% Relaciones con verbos y cardinalidad
+    %% Relaciones del Sistema con Cardinalidad
     SUCURSAL ||--|{ EMPLEADO : "LABORA_EN"
-    SUCURSAL ||--|{ LOTE : "ALMACENA"
+    SUCURsal ||--|{ LOTE : "ALMACENA"
     PROVEEDOR }|--|{ PRODUCTO : "SUMINISTRA"
     PRODUCTO ||--|{ LOTE : "TIENE_LOTES"
     
