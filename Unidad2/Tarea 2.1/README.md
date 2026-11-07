@@ -80,16 +80,21 @@ erDiagram
         string SubtotalLinea
     }
 
-    %% Relaciones y Cardinalidad
-    EMPLEADO ||--o| FARMACEUTICO : "es_un"
-    EMPLEADO ||--o| CAJERO : "es_un"
-    SUCURSAL ||--|{ EMPLEADO : "LABORA_EN"
-    SUCURSAL ||--|{ LOTE : "ALMACENA"
-    PROVEEDOR }|--|{ PRODUCTO : "SUMINISTRA"
-    PRODUCTO ||--|{ LOTE : "TIENE_LOTES"
-    CLIENTE ||--o{ VENTA : "REALIZA"
-    CAJERO ||--|{ VENTA : "ATIENDE"
-    VENTA ||--|{ DETALLE_VENTA : "CONTIENE"
-    PRODUCTO ||--o{ DETALLE_VENTA : "INCLUYE"
-    MEDICO ||--o{ RECETA_MEDICA : "EMITE"
-    RECETA_MEDICA |o--o| DETALLE_VENTA : "AUTORIZA"
+  %% Jerarquía / Especialización con cardinalidad explícita
+    EMPLEADO ||--o| FARMACEUTICO : "es_un (1:0..1)"
+    EMPLEADO ||--o| CAJERO : "es_un (1:0..1)"
+
+    %% Relaciones del Sistema con cardinalidad explícita
+    SUCURSAL ||--|{ EMPLEADO : "LABORA_EN (1:N)"
+    SUCURSAL ||--|{ LOTE : "ALMACENA (1:N)"
+    PROVEEDOR }|--|{ PRODUCTO : "SUMINISTRA (N:M)"
+    PRODUCTO ||--|{ LOTE : "TIENE_LOTES (1:N)"
+    
+    CLIENTE ||--o{ VENTA : "REALIZA (1:N)"
+    CAJERO ||--|{ VENTA : "ATIENDE (1:N)"
+    
+    VENTA ||--|{ DETALLE_VENTA : "CONTIENE (1:N)"
+    PRODUCTO ||--o{ DETALLE_VENTA : "INCLUYE (1:N)"
+    
+    MEDICO ||--o{ RECETA_MEDICA : "EMITE (1:N)"
+    RECETA_MEDICA |o--o| DETALLE_VENTA : "AUTORIZA (0..1:0..1)"
