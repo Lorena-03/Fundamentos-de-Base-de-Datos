@@ -1,101 +1,95 @@
 ## Tarea 2.1: Modelo Entidad-Relación Extendido (E-RE) — Sistema de Farmacia
 ```mermaid
 erDiagram
-    %% Definición de Entidades y Atributos Clave
     SUCURSAL {
-        ID_Sucursal PK
-        Nombre
-        Direccion
-        Telefonos
+        string ID_Sucursal
+        string Nombre
+        string Direccion
+        string Telefonos
     }
 
     EMPLEADO {
-        ID_Empleado PK
-        NombreCompleto
-        FechaContratacion
+        string ID_Empleado
+        string NombreCompleto
+        string FechaContratacion
     }
 
     FARMACEUTICO {
-        ID_Empleado PK,FK
-        CedulaProfesional
-        Especialidad
+        string ID_Empleado
+        string CedulaProfesional
+        string Especialidad
     }
 
     CAJERO {
-        ID_Empleado PK,FK
-        Turno
-        CajaAsignada
+        string ID_Empleado
+        string Turno
+        string CajaAsignada
     }
 
     CLIENTE {
-        ID_Cliente PK
-        Nombre
-        Correo
-        Telefono
+        string ID_Cliente
+        string Nombre
+        string Correo
+        string Telefono
     }
 
     PROVEEDOR {
-        ID_Proveedor PK
-        RazonSocial
-        DireccionFiscal
+        string ID_Proveedor
+        string RazonSocial
+        string DireccionFiscal
     }
 
     PRODUCTO {
-        ID_Producto PK
-        NombreComercial
-        PrincipioActivo
-        PrecioVenta
-        RequiereReceta
+        string ID_Producto
+        string NombreComercial
+        string PrincipioActivo
+        string PrecioVenta
+        string RequiereReceta
     }
 
     LOTE {
-        ID_Lote PK
-        NumeroLote
-        FechaCaducidad
-        StockActual
+        string ID_Lote
+        string NumeroLote
+        string FechaCaducidad
+        string StockActual
     }
 
     VENTA {
-        ID_Venta PK
-        FechaHora
-        Subtotal
-        MontoTotal
+        string ID_Venta
+        string FechaHora
+        string Subtotal
+        string MontoTotal
     }
 
     RECETA_MEDICA {
-        ID_Receta PK
-        Folio
-        FechaEmision
-        Diagnostico
+        string ID_Receta
+        string Folio
+        string FechaEmision
+        string Diagnostico
     }
 
     MEDICO {
-        ID_Medico PK
-        CedulaMedico
-        NombreMedico
+        string ID_Medico
+        string CedulaMedico
+        string NombreMedico
     }
 
     DETALLE_VENTA {
-        ID_Detalle PK
-        Cantidad
-        SubtotalLinea
+        string ID_Detalle
+        string Cantidad
+        string SubtotalLinea
     }
 
-    %% Jerarquía / Especialización de Empleado
-    EMPLEADO ||--o| FARMACEUTICO : "es_un (1:0..1)"
-    EMPLEADO ||--o| CAJERO : "es_un (1:0..1)"
-
-    %% Relaciones del Sistema con Cardinalidad Explícita
-    SUCURSAL ||--|{ EMPLEADO : "LABORA_EN (1:N)"
-    SUCURSAL ||--|{ LOTE : "ALMACENA (1:N)"
-    PROVEEDOR }|--|{ PRODUCTO : "SUMINISTRA (N:M)"
-    PRODUCTO ||--|{ LOTE : "TIENE_LOTES (1:N)"
-    
-    CLIENTE ||--o{ VENTA : "REALIZA (1:N)"
-    CAJERO ||--|{ VENTA : "ATIENDE (1:N)"
-    
-    VENTA ||--|{ DETALLE_VENTA : "CONTIENE (1:N)"
-    PRODUCTO ||--o{ DETALLE_VENTA : "INCLUYE (1:N)"
-    
-    MEDICO ||--o{ RECETA_MEDICA : "EMITE (1:N)"
-    RECETA_MEDICA |o--o| DETALLE_VENTA : "AUTORIZA (0..1:0..1)"
+    %% Relaciones y Cardinalidad
+    EMPLEADO ||--o| FARMACEUTICO : "es_un"
+    EMPLEADO ||--o| CAJERO : "es_un"
+    SUCURSAL ||--|{ EMPLEADO : "LABORA_EN"
+    SUCURSAL ||--|{ LOTE : "ALMACENA"
+    PROVEEDOR }|--|{ PRODUCTO : "SUMINISTRA"
+    PRODUCTO ||--|{ LOTE : "TIENE_LOTES"
+    CLIENTE ||--o{ VENTA : "REALIZA"
+    CAJERO ||--|{ VENTA : "ATIENDE"
+    VENTA ||--|{ DETALLE_VENTA : "CONTIENE"
+    PRODUCTO ||--o{ DETALLE_VENTA : "INCLUYE"
+    MEDICO ||--o{ RECETA_MEDICA : "EMITE"
+    RECETA_MEDICA |o--o| DETALLE_VENTA : "AUTORIZA"
