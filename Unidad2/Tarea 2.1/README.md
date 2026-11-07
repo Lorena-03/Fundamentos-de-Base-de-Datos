@@ -1,7 +1,7 @@
 ## Tarea 2.1: Modelo Entidad-Relación Extendido (E-RE) — Sistema de Farmacia
 ```mermaid
 erDiagram
-    %% Definición de Entidades y Atributos Clave (sin tipos de datos)
+    %% Definición de Entidades y Atributos Clave
     SUCURSAL {
         ID_Sucursal PK
         Nombre
@@ -81,7 +81,7 @@ erDiagram
         SubtotalLinea
     }
 
-    %% Jerarquía / Especialización de Empleado (1 a 0..1)
+    %% Jerarquía / Especialización de Empleado
     EMPLEADO ||--o| FARMACEUTICO : "es_un (1:0..1)"
     EMPLEADO ||--o| CAJERO : "es_un (1:0..1)"
 
