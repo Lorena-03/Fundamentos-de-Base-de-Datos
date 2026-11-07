@@ -1,4 +1,4 @@
-# Actividad 1: Diagrama de Clases UML - Sistema de farmacia
+# Tarea 2.2: Diagrama de Clases UML - Sistema de farmacia
 ```mermaid
 classDiagram
 direction TB
