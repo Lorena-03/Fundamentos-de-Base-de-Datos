@@ -1,105 +1,105 @@
-# Actividad 1: Diagrama de Clases UML
+# Actividad 1: Diagrama de Clases UML - Sistema de farmacia
 ```mermaid
 classDiagram
-    class Sucursal {
-        -string idSucursal
-        -string nombre
-        -string direccion
-        -List~string~ telefonos
-        +obtenerInventario()
-    }
+direction TB
 
-    class Empleado {
-        <<abstract>>
-        -string idEmpleado
-        -string nombreCompleto
-        -Date fechaContratacion
-    }
+class Sucursal {
+    +int ID_Sucursal
+    +string Nombre
+    +string Direccion
+    +string Telefonos
+}
 
-    class Farmaceutico {
-        -string cedulaProfesional
-        -string especialidad
-        +validarReceta()
-    }
+class Empleado {
+    +int ID_Empleado
+    +string NombreCompleto
+    +date FechaContratacion
+}
 
-    class Cajero {
-        -string turno
-        -string cajaAsignada
-        +procesarCobro()
-    }
+class Farmaceutico {
+    +int ID_Empleado
+    +string CedulaProfesional
+    +string Especialidad
+}
 
-    class Cliente {
-        -string idCliente
-        -string nombre
-        -string correo
-        -string telefono
-    }
+class Cajero {
+    +int ID_Empleado
+    +string Turno
+    +string CajaAsignada
+}
 
-    class Proveedor {
-        -string idProveedor
-        -string razonSocial
-        -string direccionFiscal
-    }
+class Cliente {
+    +int ID_Cliente
+    +string Nombre
+    +string Correo
+    +string Telefono
+}
 
-    class Producto {
-        -string idProducto
-        -string nombreComercial
-        -string principioActivo
-        -double precioVenta
-        -boolean requiereReceta
-    }
+class Medico {
+    +int ID_Medico
+    +string CedulaMedico
+    +string NombreMedico
+}
 
-    class Lote {
-        -string idLote
-        -string numeroLote
-        -Date fechaCaducidad
-        -int stockActual
-    }
+class Proveedor {
+    +int ID_Proveedor
+    +string RazonSocial
+    +string DireccionFiscal
+}
 
-    class Venta {
-        -string idVenta
-        -DateTime fechaHora
-        -double subtotal
-        -double montoTotal
-        +calcularTotal()
-    }
+class Producto {
+    +int ID_Producto
+    +string NombreComercial
+    +string PrincipioActivo
+    +decimal PrecioVenta
+    +bool RequiereReceta
+}
 
-    class DetalleVenta {
-        -string idDetalle
-        -int cantidad
-        -double subtotalLinea
-        +calcularSubtotal()
-    }
+class Lote {
+    +int ID_Lote
+    +string NumeroLote
+    +date FechaCaducidad
+    +int StockActual
+}
 
-    class RecetaMedica {
-        -string idReceta
-        -string folio
-        -Date fechaEmision
-        -string diagnostico
-    }
+class Venta {
+    +int ID_Venta
+    +datetime FechaHora
+    +decimal Subtotal
+    +decimal MontoTotal
+}
 
-    class Medico {
-        -string idMedico
-        -string cedulaMedico
-        -string nombreMedico
-    }
+class DetalleVenta {
+    +int ID_Detalle
+    +int Cantidad
+    +decimal SubtotalLinea
+}
 
-    %% Generalización / Herencia
-    Empleado <|-- Farmaceutico : es_un
-    Empleado <|-- Cajero : es_un
+class RecetaMedica {
+    +int ID_Receta
+    +string Folio
+    +date FechaEmision
+    +string Diagnostico
+}
 
-    %% Agregaciones
-    Sucursal "1" o-- "*" Empleado : labora_en
-    Sucursal "1" o-- "*" Lote : almacena
-    Producto "1" o-- "1..*" Lote : tiene_lotes
+Empleado <|-- Farmaceutico : herencia
+Empleado <|-- Cajero : herencia
 
-    %% Composición
-    Venta "1" *-- "1..*" DetalleVenta : contiene
+Sucursal "1" -- "0..*" Empleado : LABORA_EN
+Sucursal "1" o-- "0..*" Producto : ALMACENA
 
-    %% Asociaciones
-    Proveedor "*" -- "*" Producto : suministra
-    Cliente "1" -- "0..*" Venta : realiza
-    Cajero "1" -- "0..*" Venta : atiende
-    Producto "1" -- "0..*" DetalleVenta : incluye
-    Medico "1" -- "0..*" RecetaMedica : emite
-    RecetaMedica "0..1" -- "0..1" DetalleVenta : autoriza
+Proveedor "0..*" -- "0..*" Producto : SUMINISTRA
+
+Producto "1" *-- "1..*" Lote : TIENE_LOTES
+
+Cliente "1" -- "0..*" Venta : REALIZA
+
+Venta "1" *-- "1..*" DetalleVenta : CONTIENE
+
+Lote "1" -- "0..*" DetalleVenta : INCLUYE
+
+Medico "1" -- "0..*" RecetaMedica : EMITE
+
+Medico "0..1" -- "0..*" DetalleVenta : AUTORIZA
+```
+
