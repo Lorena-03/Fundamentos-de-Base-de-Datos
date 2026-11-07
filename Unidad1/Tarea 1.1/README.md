@@ -71,7 +71,7 @@ flowchart TB
 
 ---
 
-## Actividad 2. Modelos de bases de datos
+## Actividad 2: Modelos de bases de datos
 
 ### Tabla comparativa
 
@@ -89,7 +89,7 @@ La siguiente tabla presenta los principales modelos de bases de datos, su defini
 | **Orientado a columnas** | Organiza los datos por familias de columnas, según la implementación del sistema. | Filas identificadas por una clave y grupos de columnas. |
 | **En grafos** | Representa los elementos y las conexiones entre ellos, facilitando el análisis de relaciones complejas. | Nodos, aristas y propiedades. |
 
-### Esquema de los modelos de bases de datos
+### Actividad 3:Esquema de los modelos de bases de datos
 
 ```mermaid
 flowchart TB
