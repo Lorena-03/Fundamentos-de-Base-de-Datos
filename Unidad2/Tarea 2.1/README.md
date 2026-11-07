@@ -2,85 +2,85 @@
 ```mermaid
 erDiagram
     SUCURSAL {
-        ID_Sucursal
-        Nombre
-        Direccion
-        Telefonos
+        string "ID_Sucursal (PK)"
+        string "Nombre"
+        string "Direccion"
+        string "Telefonos"
     }
 
     EMPLEADO {
-        ID_Empleado
-        NombreCompleto
-        FechaContratacion
+        string "ID_Empleado (PK)"
+        string "NombreCompleto"
+        string "FechaContratacion"
     }
 
     FARMACEUTICO {
-        ID_Empleado
-        CedulaProfesional
-        Especialidad
+        string "ID_Empleado (PK, FK)"
+        string "CedulaProfesional"
+        string "Especialidad"
     }
 
     CAJERO {
-        ID_Empleado
-        Turno
-        CajaAsignada
+        string "ID_Empleado (PK, FK)"
+        string "Turno"
+        string "CajaAsignada"
     }
 
     CLIENTE {
-        ID_Cliente
-        Nombre
-        Correo
-        Telefono
+        string "ID_Cliente (PK)"
+        string "Nombre"
+        string "Correo"
+        string "Telefono"
     }
 
     PROVEEDOR {
-        ID_Proveedor
-        RazonSocial
-        DireccionFiscal
+        string "ID_Proveedor (PK)"
+        string "RazonSocial"
+        string "DireccionFiscal"
     }
 
     PRODUCTO {
-        ID_Producto
-        NombreComercial
-        PrincipioActivo
-        PrecioVenta
-        RequiereReceta
+        string "ID_Producto (PK)"
+        string "NombreComercial"
+        string "PrincipioActivo"
+        string "PrecioVenta"
+        string "RequiereReceta"
     }
 
     LOTE {
-        ID_Lote
-        NumeroLote
-        FechaCaducidad
-        StockActual
+        string "ID_Lote (PK)"
+        string "NumeroLote"
+        string "FechaCaducidad"
+        string "StockActual"
     }
 
     VENTA {
-        ID_Venta
-        FechaHora
-        Subtotal
-        MontoTotal
+        string "ID_Venta (PK)"
+        string "FechaHora"
+        string "Subtotal"
+        string "MontoTotal"
     }
 
     RECETA_MEDICA {
-        ID_Receta
-        Folio
-        FechaEmision
-        Diagnostico
+        string "ID_Receta (PK)"
+        string "Folio"
+        string "FechaEmision"
+        string "Diagnostico"
     }
 
     MEDICO {
-        ID_Medico
-        CedulaMedico
-        NombreMedico
+        string "ID_Medico (PK)"
+        string "CedulaMedico"
+        string "NombreMedico"
     }
 
     DETALLE_VENTA {
-        ID_Detalle
-        Cantidad
-        SubtotalLinea
+        string "ID_Detalle (PK)"
+        string "Cantidad"
+        string "SubtotalLinea"
     }
 
-  %% Jerarquía / Especialización con cardinalidad explícita
+    %% Jerarquía / Especialización con cardinalidad explícita
     EMPLEADO ||--o| FARMACEUTICO : "es_un (1:0..1)"
     EMPLEADO ||--o| CAJERO : "es_un (1:0..1)"
 
