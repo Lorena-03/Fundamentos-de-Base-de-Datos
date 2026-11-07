@@ -1,6 +1,5 @@
-# Unidad 1. Fundamentos de Bases de Datos
 
-## Actividad 1. Conceptos fundamentales de las bases de datos
+# Actividad 1. Conceptos fundamentales de las bases de datos
 
 ### Mapa conceptual
 
