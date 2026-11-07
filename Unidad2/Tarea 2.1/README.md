@@ -1,84 +1,84 @@
 ## Tarea 2.1: Modelo Entidad-Relación Extendido (E-RE) — Sistema de Farmacia
 ```mermaid
 erDiagram
-    %% Definición de Entidades y Atributos Clave
+    %% Definición de Entidades y Atributos Clave (sin tipos de datos)
     SUCURSAL {
-        string ID_Sucursal PK
-        string Nombre
-        string Direccion
-        string Telefonos
+        ID_Sucursal PK
+        Nombre
+        Direccion
+        Telefonos
     }
 
     EMPLEADO {
-        string ID_Empleado PK
-        string NombreCompleto
-        date FechaContratacion
+        ID_Empleado PK
+        NombreCompleto
+        FechaContratacion
     }
 
     FARMACEUTICO {
-        string ID_Empleado PK,FK
-        string CedulaProfesional
-        string Especialidad
+        ID_Empleado PK,FK
+        CedulaProfesional
+        Especialidad
     }
 
     CAJERO {
-        string ID_Empleado PK,FK
-        string Turno
-        string CajaAsignada
+        ID_Empleado PK,FK
+        Turno
+        CajaAsignada
     }
 
     CLIENTE {
-        string ID_Cliente PK
-        string Nombre
-        string Correo
-        string Telefono
+        ID_Cliente PK
+        Nombre
+        Correo
+        Telefono
     }
 
     PROVEEDOR {
-        string ID_Proveedor PK
-        string RazonSocial
-        string DireccionFiscal
+        ID_Proveedor PK
+        RazonSocial
+        DireccionFiscal
     }
 
     PRODUCTO {
-        string ID_Producto PK
-        string NombreComercial
-        string PrincipioActivo
-        float PrecioVenta
-        boolean RequiereReceta
+        ID_Producto PK
+        NombreComercial
+        PrincipioActivo
+        PrecioVenta
+        RequiereReceta
     }
 
     LOTE {
-        string ID_Lote PK
-        string NumeroLote
-        date FechaCaducidad
-        int StockActual
+        ID_Lote PK
+        NumeroLote
+        FechaCaducidad
+        StockActual
     }
 
     VENTA {
-        string ID_Venta PK
-        datetime FechaHora
-        float Subtotal
-        float MontoTotal
+        ID_Venta PK
+        FechaHora
+        Subtotal
+        MontoTotal
     }
 
     RECETA_MEDICA {
-        string ID_Receta PK
-        string Folio
-        date FechaEmision
-        string Diagnostico
+        ID_Receta PK
+        Folio
+        FechaEmision
+        Diagnostico
     }
 
     MEDICO {
-        string ID_Medico PK
-        string CedulaMedico
-        string NombreMedico
+        ID_Medico PK
+        CedulaMedico
+        NombreMedico
     }
 
     DETALLE_VENTA {
-        string ID_Detalle PK
-        int Cantidad
-        float SubtotalLinea
+        ID_Detalle PK
+        Cantidad
+        SubtotalLinea
     }
 
     %% Jerarquía / Especialización de Empleado (1 a 0..1)
