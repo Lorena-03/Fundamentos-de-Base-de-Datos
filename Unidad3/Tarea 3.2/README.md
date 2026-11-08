@@ -1,4 +1,4 @@
-##Tarea 3.2: Generación del esquema físico en SGBD y script LDD
+## Tarea 3.2: Generación del esquema físico en SGBD y script LDD
 
 En el siguiente diagrama representa el modelo relacional de la base de datos Farmacia, incluyendo sus 14 tablas, atributos, claves primarias y claves foráneas.
 
