@@ -1,158 +1,142 @@
--- 03_queries_dml.sql | Ejecutar TERCERO, despues de 02_data_inserts.sql.
--- Incluye consultas SELECT y pruebas controladas UPDATE / DELETE.
+
+-- 03_queries_dml.sql
+-- Consultas y modificaciones de la base de datos EscuelaSQL
+
 USE EscuelaSQL;
 GO
 
-/* ============================================================
-   FASE 3. CONSULTAS LMD (SELECT)
-   ============================================================ */
+-- =====================================
+-- 1. MOSTRAR TODOS LOS ALUMNOS
+-- =====================================
 
--- 3.1 SELECT basico: todos los alumnos.
-SELECT AlumnoID, Nombre, Correo, Edad, FechaRegistro
-FROM dbo.Alumnos;
+SELECT * FROM Alumnos;
 
--- 3.2 WHERE: alumnos de 20 anios o mas.
-SELECT AlumnoID, Nombre, Edad
-FROM dbo.Alumnos
+
+-- =====================================
+-- 2. MOSTRAR ALUMNOS DE 20 ANIOS O MAS
+-- =====================================
+
+SELECT *
+FROM Alumnos
 WHERE Edad >= 20;
 
--- 3.3 WHERE con AND + ORDER BY: cursos dentro de un rango de costos.
-SELECT CursoID, Nombre, Costo
-FROM dbo.Cursos
-WHERE Costo >= 1200 AND Costo <= 1800
-ORDER BY Costo DESC, Nombre ASC;
 
--- 3.4 COUNT, SUM, AVG, MAX, MIN sobre todos los cursos.
+-- =====================================
+-- 3. ORDENAR CURSOS POR PRECIO
+-- =====================================
+
+SELECT *
+FROM Cursos
+ORDER BY Costo DESC;
+
+
+-- =====================================
+-- 4. CONTAR LOS CURSOS
+-- =====================================
+
+SELECT COUNT(*) AS TotalCursos
+FROM Cursos;
+
+
+-- =====================================
+-- 5. SUMA, PROMEDIO, MAYOR Y MENOR COSTO
+-- =====================================
+
 SELECT
-    COUNT(*) AS TotalCursos,
-    SUM(Costo) AS SumaCostos,
-    AVG(Costo) AS PromedioCosto,
-    MAX(Costo) AS CostoMaximo,
-    MIN(Costo) AS CostoMinimo
-FROM dbo.Cursos;
+    SUM(Costo) AS Suma,
+    AVG(Costo) AS Promedio,
+    MAX(Costo) AS Mayor,
+    MIN(Costo) AS Menor
+FROM Cursos;
 
--- 3.5 GROUP BY + COUNT + AVG: resumen por curso.
--- El LEFT JOIN incluye cursos sin inscritos.
+
+-- =====================================
+-- 6. CONTAR ALUMNOS INSCRITOS POR CURSO
+-- =====================================
+
 SELECT
-    c.CursoID,
-    c.Nombre AS Curso,
-    COUNT(i.InscripcionID) AS CantidadInscritos,
-    AVG(i.Calificacion) AS PromedioCalificacion
-FROM dbo.Cursos AS c
-LEFT JOIN dbo.Inscripciones AS i ON i.CursoID = c.CursoID
-GROUP BY c.CursoID, c.Nombre
-ORDER BY CantidadInscritos DESC, c.Nombre;
+    CursoID,
+    COUNT(*) AS TotalInscritos
+FROM Inscripciones
+GROUP BY CursoID;
 
--- 3.6 HAVING: mostrar solo cursos con al menos 2 inscritos.
+
+-- =====================================
+-- 7. CURSOS CON 2 O MAS INSCRIPCIONES
+-- =====================================
+
 SELECT
-    c.Nombre AS Curso,
-    COUNT(i.InscripcionID) AS CantidadInscritos
-FROM dbo.Cursos AS c
-INNER JOIN dbo.Inscripciones AS i ON i.CursoID = c.CursoID
-GROUP BY c.CursoID, c.Nombre
-HAVING COUNT(i.InscripcionID) >= 2
-ORDER BY CantidadInscritos DESC, c.Nombre;
+    CursoID,
+    COUNT(*) AS TotalInscritos
+FROM Inscripciones
+GROUP BY CursoID
+HAVING COUNT(*) >= 2;
 
--- 3.7 INNER JOIN: solo alumnos con inscripcion, y sus cursos.
+
+-- =====================================
+-- 8. INNER JOIN
+-- MOSTRAR ALUMNOS Y SUS CURSOS
+-- =====================================
+
 SELECT
-    a.Nombre AS Alumno,
-    c.Nombre AS Curso,
-    i.Fecha,
-    i.Calificacion
-FROM dbo.Inscripciones AS i
-INNER JOIN dbo.Alumnos AS a ON a.AlumnoID = i.AlumnoID
-INNER JOIN dbo.Cursos AS c ON c.CursoID = i.CursoID
-ORDER BY a.Nombre, c.Nombre;
+    Alumnos.Nombre AS Alumno,
+    Cursos.Nombre AS Curso
+FROM Inscripciones
+INNER JOIN Alumnos
+    ON Inscripciones.AlumnoID = Alumnos.AlumnoID
+INNER JOIN Cursos
+    ON Inscripciones.CursoID = Cursos.CursoID;
 
--- 3.8 LEFT JOIN: todos los alumnos, incluso los no inscritos.
+
+-- =====================================
+-- 9. LEFT JOIN
+-- MOSTRAR TODOS LOS ALUMNOS
+-- =====================================
+
 SELECT
-    a.Nombre AS Alumno,
-    c.Nombre AS Curso,
-    i.Calificacion
-FROM dbo.Alumnos AS a
-LEFT JOIN dbo.Inscripciones AS i ON i.AlumnoID = a.AlumnoID
-LEFT JOIN dbo.Cursos AS c ON c.CursoID = i.CursoID
-ORDER BY a.Nombre, c.Nombre;
+    Alumnos.Nombre,
+    Inscripciones.CursoID
+FROM Alumnos
+LEFT JOIN Inscripciones
+    ON Alumnos.AlumnoID = Inscripciones.AlumnoID;
 
--- 3.9 LEFT JOIN con IS NULL: alumnos sin inscripciones.
-SELECT a.AlumnoID, a.Nombre
-FROM dbo.Alumnos AS a
-LEFT JOIN dbo.Inscripciones AS i ON i.AlumnoID = a.AlumnoID
-WHERE i.InscripcionID IS NULL;
 
-/* ============================================================
-   FASE 4. MANTENIMIENTO CONTROLADO: UPDATE / DELETE
-   ============================================================ */
+-- =====================================
+-- 10. UPDATE
+-- CAMBIAR LA EDAD DE UN ALUMNO
+-- =====================================
 
--- 4.1 UPDATE dentro de una transaccion; ROLLBACK revierte el cambio.
-PRINT N'Prueba 4.1: UPDATE de calificacion (se revierte).';
-SELECT InscripcionID, AlumnoID, CursoID, Calificacion
-FROM dbo.Inscripciones WHERE InscripcionID = 1;
+UPDATE Alumnos
+SET Edad = 21
+WHERE AlumnoID = 1;
 
-BEGIN TRANSACTION;
-    UPDATE dbo.Inscripciones
-    SET Calificacion = 98.00
-    WHERE InscripcionID = 1;
+-- Comprobar el cambio
+SELECT * FROM Alumnos
+WHERE AlumnoID = 1;
 
-    SELECT InscripcionID, AlumnoID, CursoID, Calificacion
-    FROM dbo.Inscripciones WHERE InscripcionID = 1;
-ROLLBACK TRANSACTION;
 
-SELECT InscripcionID, AlumnoID, CursoID, Calificacion
-FROM dbo.Inscripciones WHERE InscripcionID = 1;
+-- =====================================
+-- 11. DELETE
+-- ELIMINAR UNA INSCRIPCION
+-- =====================================
 
--- 4.2 DELETE bloqueado por la FK: Ana (ID 1) tiene inscripciones.
--- La excepcion 547 se espera y se captura sin detener el resto del guion.
-PRINT N'Prueba 4.2: intentar borrar un alumno con inscripciones (debe fallar).';
-BEGIN TRY
-    BEGIN TRANSACTION;
-        DELETE FROM dbo.Alumnos WHERE AlumnoID = 1;
-    COMMIT TRANSACTION;
-    PRINT N'ADVERTENCIA: la eliminacion se completo inesperadamente.';
-END TRY
-BEGIN CATCH
-    IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION;
-    PRINT CONCAT(N'Eliminacion impedida por integridad referencial. Error ',
-                 ERROR_NUMBER(), N': ', ERROR_MESSAGE());
-END CATCH;
+DELETE FROM Inscripciones
+WHERE InscripcionID = 1;
 
--- 4.3 FK bloquea inscribir un alumno inexistente (ID 9999).
-PRINT N'Prueba 4.3: intentar inscribir a un alumno inexistente (debe fallar).';
-BEGIN TRY
-    BEGIN TRANSACTION;
-        INSERT INTO dbo.Inscripciones (AlumnoID, CursoID, Fecha)
-        VALUES (9999, 1, '2026-09-06');
-    COMMIT TRANSACTION;
-    PRINT N'ADVERTENCIA: la insercion se completo inesperadamente.';
-END TRY
-BEGIN CATCH
-    IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION;
-    PRINT CONCAT(N'Insercion impedida por integridad referencial. Error ',
-                 ERROR_NUMBER(), N': ', ERROR_MESSAGE());
-END CATCH;
+-- Comprobar las inscripciones
+SELECT * FROM Inscripciones;
 
--- 4.4 DELETE correcto: primero eliminar inscripciones, luego al alumno.
--- Se usa ROLLBACK para conservar todos los datos de la practica.
-PRINT N'Prueba 4.4: eliminar registros dependientes y despues el alumno (se revierte).';
-BEGIN TRY
-    BEGIN TRANSACTION;
-        DELETE FROM dbo.Inscripciones WHERE AlumnoID = 1;
-        DELETE FROM dbo.Alumnos WHERE AlumnoID = 1;
 
-        SELECT COUNT(*) AS Alumno1DurantePrueba
-        FROM dbo.Alumnos WHERE AlumnoID = 1; -- Debe ser 0
+-- =====================================
+-- 12. VERIFICAR LOS REGISTROS
+-- =====================================
 
-    ROLLBACK TRANSACTION;
-    PRINT N'Eliminacion valida comprobada y revertida con ROLLBACK.';
-END TRY
-BEGIN CATCH
-    IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION;
-    THROW;
-END CATCH;
+SELECT COUNT(*) AS TotalAlumnos
+FROM Alumnos;
 
--- Comprobacion final: se mantienen los datos originales.
-SELECT
-    (SELECT COUNT(*) FROM dbo.Alumnos) AS TotalAlumnos,       -- 5
-    (SELECT COUNT(*) FROM dbo.Cursos) AS TotalCursos,         -- 4
-    (SELECT COUNT(*) FROM dbo.Inscripciones) AS TotalInscripciones; -- 7
-GO
+SELECT COUNT(*) AS TotalCursos
+FROM Cursos;
+
+SELECT COUNT(*) AS TotalInscripciones
+FROM Inscripciones;
+
